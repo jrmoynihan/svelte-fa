@@ -1,6 +1,6 @@
 {
   "name": "svelte-fa",
-  "version": "3.0.3",
+  "version": "4.0.2",
   "description": "Tiny FontAwesome component for Svelte",
   "keywords": [
     "fontawesome",
@@ -14,13 +14,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cweili/svelte-fa.git"
+    "url": "https://github.com/@jrmoynihan/svelte-fa.git"
   },
   "author": "Cweili",
+  "maintainers": [
+    "jrmoynihan"
+  ],
   "license": "MIT",
-  "homepage": "https://cweili.github.io/svelte-fa/",
+  "homepage": "https://github.com/jrmoynihan/svelte-fa/",
   "bugs": {
-    "url": "https://github.com/Cweili/svelte-fa/issues"
+    "url": "https://github.com/jrmoynihan/svelte-fa/issues"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-common-types": "^6.2.0",
