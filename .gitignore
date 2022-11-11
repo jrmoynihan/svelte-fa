@@ -7,6 +7,3 @@ node_modules
 .env.*
 !.env.example
 .dccache
-package/package.json
-.gitignore
-.svelte-kit/ambient.d.ts
