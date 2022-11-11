@@ -47,6 +47,7 @@ declare module '$env/static/private' {
 	export const npm_package_scripts_lint: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
+	export const npm_package_maintainers_0: string;
 	export const npm_package_scripts_dev: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const MallocNanoZone: string;
@@ -72,6 +73,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_execpath: string;
 	export const npm_package_devDependencies_svelte: string;
+	export const npm_package_scripts_package_publish_minor: string;
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
 	export const PATH: string;
 	export const __CFBundleIdentifier: string;
@@ -105,6 +107,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_svelte_check: string;
 	export const SHLVL: string;
 	export const HOME: string;
+	export const npm_package_scripts_package_publish_patch: string;
 	export const npm_package_type: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const npm_package_scripts_test: string;
@@ -116,12 +119,14 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_script: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const NVM_BIN: string;
+	export const npm_package_scripts_package_publish_major: string;
 	export const npm_config_user_agent: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const GIT_ASKPASS: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
 	export const npm_package_devDependencies_jest_environment_jsdom: string;
+	export const npm_package_scripts_publish: string;
 	export const npm_package_scripts_check: string;
 	export const COLORTERM: string;
 	export const npm_node_execpath: string;
@@ -175,6 +180,7 @@ declare module '$env/dynamic/private' {
 		npm_package_scripts_lint: string;
 		TERM_PROGRAM_VERSION: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
+		npm_package_maintainers_0: string;
 		npm_package_scripts_dev: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		MallocNanoZone: string;
@@ -200,6 +206,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_tslib: string;
 		npm_execpath: string;
 		npm_package_devDependencies_svelte: string;
+		npm_package_scripts_package_publish_minor: string;
 		npm_package_devDependencies__typescript_eslint_parser: string;
 		PATH: string;
 		__CFBundleIdentifier: string;
@@ -233,6 +240,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_svelte_check: string;
 		SHLVL: string;
 		HOME: string;
+		npm_package_scripts_package_publish_patch: string;
 		npm_package_type: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		npm_package_scripts_test: string;
@@ -244,12 +252,14 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_script: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		NVM_BIN: string;
+		npm_package_scripts_package_publish_major: string;
 		npm_config_user_agent: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
 		GIT_ASKPASS: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
 		npm_package_devDependencies_jest_environment_jsdom: string;
+		npm_package_scripts_publish: string;
 		npm_package_scripts_check: string;
 		COLORTERM: string;
 		npm_node_execpath: string;

@@ -2,8 +2,10 @@
 node_modules
 /build
 /.svelte-kit
+/package*
 /package
 .env
 .env.*
 !.env.example
 .dccache
+/.svelte-kit*
