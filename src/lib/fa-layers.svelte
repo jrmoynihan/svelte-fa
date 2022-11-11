@@ -1,6 +1,6 @@
-<script>
+<script lang='ts'>
 import {
-  getStyles,
+  getStyles, type IconSize, type PullDirection,
 } from './utils';
 
 let clazz = '';
@@ -8,10 +8,10 @@ export { clazz as class };
 export let id = '';
 export let style = '';
 
-export let size = '';
-export let pull = '';
+export let size : IconSize = '';
+export let pull : PullDirection = '';
 
-let s;
+let s : string;
 
 $: s = getStyles(style, size, pull, true);
 </script>
