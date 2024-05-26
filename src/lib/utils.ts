@@ -14,6 +14,21 @@ export type IconSize =
 	| '10x'
 	| `${number}x`
 	| '';
+export const icon_sizes = [
+	'xs',
+	'sm',
+	'lg',
+	'1x',
+	'2x',
+	'3x',
+	'4x',
+	'5x',
+	'6x',
+	'7x',
+	'8x',
+	'9x',
+	'10x',
+];
 export type PullDirection = 'left' | 'right' | '';
 export type FlipDirection = 'horizontal' | 'vertical' | 'both' | false;
 

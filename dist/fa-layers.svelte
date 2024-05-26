@@ -1,23 +1,13 @@
-<script lang='ts'>
-	import type { HTMLAttributes } from 'svelte/elements';
-	import {
-		getStyles, type IconSize, type PullDirection,
-	} from './utils';
-
-interface FaLayersProps extends HTMLAttributes<HTMLElement> {
-  size?: IconSize;
-  style?: string;
-  pull?: PullDirection;
-}
-
+<script lang='ts'>import {
+  getStyles
+} from "./utils";
 let {
   size = "",
   pull,
   children,
   ...attributes
-} : FaLayersProps = $props();
-
-const style : string = $derived(getStyles(attributes?.style ?? "", size, pull, true));
+} = $props();
+const style = $derived(getStyles(attributes?.style ?? "", size, pull, true));
 </script>
 
 <span

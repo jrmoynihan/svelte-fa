@@ -1,65 +1,30 @@
-<script lang="ts">
-	import type {
-		IconDefinition,
-		IconPathData,
-	} from '@fortawesome/fontawesome-common-types';
-	import {
-		getStyles,
-		getTransform,
-		type FlipDirection,
-		type IconSize,
-		type PullDirection,
-	} from './utils';
-
-	interface FaProps {
-		class?: string;
-		id?: string;
-		style?: string;
-		icon: IconDefinition;
-		size?: IconSize;
-		color?: string;
-		fw?: boolean;
-		pull?: PullDirection;
-		scale?: number;
-		translateX?: number | string;
-		translateY?: number | string;
-		rotate?: number | string;
-		flip?: FlipDirection;
-		spin?: boolean;
-		pulse?: boolean;
-		primaryColor?: string;
-		secondaryColor?: string;
-		primaryOpacity?: number;
-		secondaryOpacity?: number;
-		swapOpacity?: boolean;
-	}
-
-	let {
-		icon,
-		size = '',
-		color,
-		fw,
-		pull,
-		scale = 1,
-		translateX = 0,
-		translateY = 0,
-		rotate = 0,
-		flip = false,
-		spin,
-		pulse,
-		primaryColor,
-		secondaryColor,
-		primaryOpacity = 1,
-		secondaryOpacity = 0.4,
-		swapOpacity,
-		...attributes
-	}: FaProps = $props();
-	
-
-	const icon_data: [number, number, string[], string, IconPathData] = $derived((icon && icon.icon) || [0, 0, '', [], ''])
-	const style: string = $derived(getStyles(attributes.style ?? '', size, pull, fw))
-	const transform: string | null | undefined = $derived(getTransform(scale, translateX, translateY, rotate, flip, 512))
-
+<script lang="ts">import {
+  getStyles,
+  getTransform
+} from "./utils";
+let {
+  icon,
+  size = "",
+  color,
+  fw,
+  pull,
+  scale = 1,
+  translateX = 0,
+  translateY = 0,
+  rotate = 0,
+  flip = false,
+  spin,
+  pulse,
+  primaryColor,
+  secondaryColor,
+  primaryOpacity = 1,
+  secondaryOpacity = 0.4,
+  swapOpacity,
+  ...attributes
+} = $props();
+const icon_data = $derived(icon && icon.icon || [0, 0, "", [], ""]);
+const style = $derived(getStyles(attributes.style ?? "", size, pull, fw));
+const transform = $derived(getTransform(scale, translateX, translateY, rotate, flip, 512));
 </script>
 
 {#snippet duotone_path(path_data_item: number, fill, fill_opacity, swap_opacity)}
