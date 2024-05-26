@@ -8,3 +8,4 @@ package
 .env.*
 !.env.example
 .dccache
+/dist

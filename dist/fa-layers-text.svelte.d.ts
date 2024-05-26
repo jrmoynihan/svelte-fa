@@ -1,10 +1,8 @@
 import { SvelteComponent } from "svelte";
-import { type IconSize, type FlipDirection } from "./utils";
+import type { HTMLAttributes } from "svelte/elements";
+import { type FlipDirection, type IconSize } from "./utils";
 declare const __propDef: {
-    props: {
-        class?: string | undefined;
-        id?: string | undefined;
-        style?: string | undefined;
+    props: HTMLAttributes<HTMLElement> & {
         size?: IconSize | undefined;
         color?: string | undefined;
         scale?: string | number | undefined;
@@ -16,13 +14,21 @@ declare const __propDef: {
     events: {
         [evt: string]: CustomEvent<any>;
     };
-    slots: {
-        default: {};
-    };
+    slots: {};
 };
-export type FaLayersTextProps = typeof __propDef.props;
+type FaLayersTextProps_ = typeof __propDef.props;
+export { FaLayersTextProps_ as FaLayersTextProps };
 export type FaLayersTextEvents = typeof __propDef.events;
 export type FaLayersTextSlots = typeof __propDef.slots;
-export default class FaLayersText extends SvelteComponent<FaLayersTextProps, FaLayersTextEvents, FaLayersTextSlots> {
+export default class FaLayersText extends SvelteComponent<FaLayersTextProps_, FaLayersTextEvents, FaLayersTextSlots> {
+    constructor(options?: import("svelte").ComponentConstructorOptions<HTMLAttributes<HTMLElement> & {
+        size?: IconSize | undefined;
+        color?: string | undefined;
+        scale?: string | number | undefined;
+        translateX?: string | number | undefined;
+        translateY?: string | number | undefined;
+        rotate?: string | number | undefined;
+        flip?: FlipDirection | undefined;
+    }>);
+    $$bindings: "";
 }
-export {};

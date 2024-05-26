@@ -1,29 +1,36 @@
 <script lang="ts">
-  import {
-    joinCss,
-    getStyles,
-    getTransform,
-    type IconSize,
-    type FlipDirection,
-  } from "./utils";
+	import type { HTMLAttributes } from "svelte/elements";
+	import {
+		getStyles,
+		getTransform,
+		joinCss,
+		type FlipDirection,
+		type IconSize,
+	} from "./utils";
 
-  let clazz = "";
-  export { clazz as class };
-  export let id = "";
-  export let style = "";
+ interface FaLayersTextProps extends HTMLAttributes<HTMLElement> {
+  size?: IconSize;
+  color?: string;
+  scale?: number | string;
+  translateX?: number | string;
+  translateY?: number | string;
+  rotate?: number | string;
+  flip?: FlipDirection;
+ }
 
-  export let size: IconSize = "";
-  export let color: string = "";
+  let {
+    size = "",
+    color,
+    scale = 1,
+    translateX = 0,
+    translateY = 0,
+    rotate = "",
+    flip = false,
+    children,
+    ...attributes
+  } : FaLayersTextProps = $props()
 
-  export let scale: number | string = 1;
-  export let translateX: number | string = 0;
-  export let translateY: number | string = 0;
-  export let rotate: number | string = "";
-  export let flip: FlipDirection = false;
-
-  let s: string;
-
-  $: s = getStyles(
+  const style: string = $derived(getStyles(
     joinCss([
       joinCss({
         color,
@@ -40,14 +47,17 @@
           "deg"
         ),
       }),
-      style,
+      attributes.style,
     ]),
     size
-  );
+  ));
 </script>
 
-<span {id} class="svelte-fa-layers-text {clazz}">
-  <span style={s}>
-    <slot />
+<span 
+  {...attributes}
+  class="svelte-fa-layers-text {attributes.class}" 
+>
+  <span {style}>
+    {@render children?.()}
   </span>
 </span>

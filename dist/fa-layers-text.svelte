@@ -1,29 +1,47 @@
-<script lang="ts">import { joinCss, getStyles, getTransform, } from "./utils";
-let clazz = "";
-export { clazz as class };
-export let id = "";
-export let style = "";
-export let size = "";
-export let color = "";
-export let scale = 1;
-export let translateX = 0;
-export let translateY = 0;
-export let rotate = "";
-export let flip = false;
-let s;
-$: s = getStyles(joinCss([
+<script lang="ts">import {
+  getStyles,
+  getTransform,
+  joinCss
+} from "./utils";
+let {
+  size = "",
+  color,
+  scale = 1,
+  translateX = 0,
+  translateY = 0,
+  rotate = "",
+  flip = false,
+  children,
+  ...attributes
+} = $props();
+const style = $derived(getStyles(
+  joinCss([
     joinCss({
-        color,
-        display: "inline-block",
-        height: "auto",
-        transform: getTransform(scale, translateX, translateY, rotate, flip, undefined, "em", "deg"),
+      color,
+      display: "inline-block",
+      height: "auto",
+      transform: getTransform(
+        scale,
+        translateX,
+        translateY,
+        rotate,
+        flip,
+        void 0,
+        "em",
+        "deg"
+      )
     }),
-    style,
-]), size);
+    attributes.style
+  ]),
+  size
+));
 </script>
 
-<span {id} class="svelte-fa-layers-text {clazz}">
-  <span style={s}>
-    <slot />
+<span 
+  {...attributes}
+  class="svelte-fa-layers-text {attributes.class}" 
+>
+  <span {style}>
+    {@render children?.()}
   </span>
 </span>

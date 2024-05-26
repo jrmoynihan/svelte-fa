@@ -11,90 +11,93 @@
 		type PullDirection,
 	} from './utils';
 
-	let clazz = '';
-	export { clazz as class };
-	export let id = '';
-	export let style = '';
+	interface FaProps {
+		class?: string;
+		id?: string;
+		style?: string;
+		icon: IconDefinition;
+		size?: IconSize;
+		color?: string;
+		fw?: boolean;
+		pull?: PullDirection;
+		scale?: number;
+		translateX?: number | string;
+		translateY?: number | string;
+		rotate?: number | string;
+		flip?: FlipDirection;
+		spin?: boolean;
+		pulse?: boolean;
+		primaryColor?: string;
+		secondaryColor?: string;
+		primaryOpacity?: number;
+		secondaryOpacity?: number;
+		swapOpacity?: boolean;
+	}
 
-	export let icon: IconDefinition;
+	let {
+		icon,
+		size = '',
+		color,
+		fw,
+		pull,
+		scale = 1,
+		translateX = 0,
+		translateY = 0,
+		rotate = 0,
+		flip = false,
+		spin,
+		pulse,
+		primaryColor,
+		secondaryColor,
+		primaryOpacity = 1,
+		secondaryOpacity = 0.4,
+		swapOpacity,
+		...attributes
+	}: FaProps = $props();
+	
 
-	export let size: IconSize = '';
-	export let color: string = '';
+	const icon_data: [number, number, string[], string, IconPathData] = $derived((icon && icon.icon) || [0, 0, '', [], ''])
+	const style: string = $derived(getStyles(attributes.style ?? '', size, pull, fw))
+	const transform: string | null | undefined = $derived(getTransform(scale, translateX, translateY, rotate, flip, 512))
 
-	export let fw = false;
-	export let pull: PullDirection = '';
-
-	export let scale = 1;
-	export let translateX: number | string = 0;
-	export let translateY: number | string = 0;
-	export let rotate: number | string = '';
-	export let flip: FlipDirection = false;
-
-	export let spin = false;
-	export let pulse = false;
-
-	// Duotone Icons
-	export let primaryColor = '';
-	export let secondaryColor = '';
-	export let primaryOpacity = 1;
-	export let secondaryOpacity = 0.4;
-	export let swapOpacity = false;
-
-	let i: [number, number, string[], string, IconPathData];
-	let s: string;
-
-	let transform: string | null | undefined;
-
-	$: i = (icon && icon.icon) || [0, 0, '', [], ''];
-
-	$: s = getStyles(style, size, pull, fw);
-
-	$: transform = getTransform(
-		scale,
-		translateX,
-		translateY,
-		rotate,
-		flip,
-		512
-	);
 </script>
 
-{#if i[4]}
+{#snippet duotone_path(path_data_item: number, fill, fill_opacity, swap_opacity)}
+	<path
+		d={icon_data[4][path_data_item]}
+		fill={fill || color || 'currentColor'}
+		fill-opacity={swapOpacity != false
+			? fill_opacity
+			: swap_opacity}
+		transform="translate({icon_data[0] / -2} {icon_data[1] / -2})"
+	/>
+{/snippet}
+
+
+{#if icon_data[4]}
 	<svg
-		id={id || undefined}
-		class="svelte-fa {clazz}"
+		{...attributes}
+		class="svelte-fa {attributes.class}"
 		class:pulse
 		class:spin
-		style={s}
-		viewBox="0 0 {i[0]} {i[1]}"
+		{style}
+		viewBox="0 0 {icon_data[0]} {icon_data[1]}"
 		aria-hidden="true"
 		role="img"
 		xmlns="http://www.w3.org/2000/svg">
 		<g
-			transform="translate({i[0] / 2} {i[1] / 2})"
-			transform-origin="{i[0] / 4} 0">
+			transform="translate({icon_data[0] / 2} {icon_data[1] / 2})"
+			transform-origin="{icon_data[0] / 4} 0">
 			<g {transform}>
-				{#if typeof i[4] == 'string'}
+				{#if typeof icon_data[4] == 'string'}
 					<path
-						d={i[4]}
+						d={icon_data[4]}
 						fill={color || primaryColor || 'currentColor'}
-						transform="translate({i[0] / -2} {i[1] / -2})" />
+						transform="translate({icon_data[0] / -2} {icon_data[1] / -2})" />
 				{:else}
 					<!-- Duotone icons -->
-					<path
-						d={i[4][0]}
-						fill={secondaryColor || color || 'currentColor'}
-						fill-opacity={swapOpacity != false
-							? primaryOpacity
-							: secondaryOpacity}
-						transform="translate({i[0] / -2} {i[1] / -2})" />
-					<path
-						d={i[4][1]}
-						fill={primaryColor || color || 'currentColor'}
-						fill-opacity={swapOpacity != false
-							? secondaryOpacity
-							: primaryOpacity}
-						transform="translate({i[0] / -2} {i[1] / -2})" />
+					{@render duotone_path(0, secondaryColor, primaryOpacity, secondaryOpacity)}
+					{@render duotone_path(1, primaryColor, secondaryOpacity, primaryOpacity)}
 				{/if}
 			</g>
 		</g>
