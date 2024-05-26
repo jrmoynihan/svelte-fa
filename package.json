@@ -40,10 +40,10 @@
 		"test": "tsd && jest test --coverage"
 	},
 	"dependencies": {
-		"@sveltejs/kit": "^1.15.7",
 		"svelte": "^5.0.0-next"
 	},
 	"devDependencies": {
+		"@sveltejs/kit": "^1.15.7",
 		"@fortawesome/fontawesome-common-types": "^6.4.0",
 		"@fortawesome/free-solid-svg-icons": "^6.4.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
