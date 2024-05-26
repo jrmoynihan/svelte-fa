@@ -12,10 +12,10 @@
 	} from './utils';
 
 	interface FaProps {
+		icon: IconDefinition;
 		class?: string;
 		id?: string;
 		style?: string;
-		icon: IconDefinition;
 		size?: IconSize;
 		color?: string;
 		fw?: boolean;
@@ -56,7 +56,7 @@
 	}: FaProps = $props();
 	
 
-	const icon_data: [number, number, string[], string, IconPathData] = $derived((icon && icon.icon) || [0, 0, '', [], ''])
+	const icon_data: [number, number, string[], string, IconPathData] = $derived((icon && icon?.icon) || [0, 0, '', [], ''])
 	const style: string = $derived(getStyles(attributes.style ?? '', size, pull, fw))
 	const transform: string | null | undefined = $derived(getTransform(scale, translateX, translateY, rotate, flip, 512))
 

@@ -22,7 +22,7 @@ let {
   swapOpacity,
   ...attributes
 } = $props();
-const icon_data = $derived(icon && icon.icon || [0, 0, "", [], ""]);
+const icon_data = $derived(icon && icon?.icon || [0, 0, "", [], ""]);
 const style = $derived(getStyles(attributes.style ?? "", size, pull, fw));
 const transform = $derived(getTransform(scale, translateX, translateY, rotate, flip, 512));
 </script>

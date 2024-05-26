@@ -3,10 +3,10 @@ import type { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { type FlipDirection, type IconSize, type PullDirection } from './utils';
 declare const __propDef: {
     props: {
+        icon: IconDefinition;
         class?: string | undefined;
         id?: string | undefined;
         style?: string | undefined;
-        icon: IconDefinition;
         size?: IconSize | undefined;
         color?: string | undefined;
         fw?: boolean | undefined;
@@ -35,10 +35,10 @@ export type FaEvents = typeof __propDef.events;
 export type FaSlots = typeof __propDef.slots;
 export default class Fa extends SvelteComponent<FaProps_, FaEvents, FaSlots> {
     constructor(options?: import("svelte").ComponentConstructorOptions<{
+        icon: IconDefinition;
         class?: string | undefined;
         id?: string | undefined;
         style?: string | undefined;
-        icon: IconDefinition;
         size?: IconSize | undefined;
         color?: string | undefined;
         fw?: boolean | undefined;
